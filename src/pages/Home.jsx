@@ -19,16 +19,18 @@ class Home extends React.Component{
                     image = {item.url_picture}
                     publisher = {item.penerbit}
                     price = {item.harga}
-                    jenjang = {item.jenjang}     
+                    jenjang = {item.jenjang}
+                    id = {item.id}     
             />
         })
         return(
             <React.Fragment>
                 <Header
+                    homeBack = {e=>this.props.handleBackHome(e)}
                     prosesSearch={e => this.props.handleSearch(e)}
                     onCategory = {e => this.props.handleCategory(e)}/>
-                <div className="container-fluid mr-0 py-5" style={{backgroundColor:'#f2f6f5'}}>
-                    <div className="container row" style={{backgroundColor:'c8dad3'}}>
+                <div className="container-fluid  py-5" style={{backgroundColor:'#f2f6f5'}}>
+                    <div className="container mr-0  row" style={{backgroundColor:'c8dad3'}}>
                         {isLoading ? <div style={{textAlign : 'center'}}>Loading ...</div> : listAllBook}
                     </div>
                 </div>

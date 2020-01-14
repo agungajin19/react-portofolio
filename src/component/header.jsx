@@ -6,6 +6,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 
 import ModalSignin from './modal_signin'
+import ModalSignup from './modal_signup'
 
 
 class Header extends Component{
@@ -14,6 +15,14 @@ class Header extends Component{
         localStorage.setItem('status_login', false)
         localStorage.removeItem('username')
         localStorage.removeItem('token')
+        store.setState({
+            statusPenerbit : false,
+            listLogTransaction : [],
+            listPublisherBook : [],
+            usernameProfile : '',
+            emailProfile : '',
+            totalRevenue: 0,
+        })
         this.props.history.push("/")
     }
     render(){
@@ -22,7 +31,7 @@ class Header extends Component{
         return(
             <header>
                 <nav class="navbar navbar-expand-lg navbar-light" style={{backgroundColor:'#93b5b3'}}>
-                <Link to="/"><a class="navbar-brand pl-2" href="/"><img src={require('../image/logo.png')} alt="logo" width="40px" color='#63707e'/>easy.com</a></Link>
+                <Link to="/"><a class="navbar-brand pl-2" onClick={()=>this.props.homeBack('')}><img src={require('../image/logo.png')} alt="logo" width="40px" color='#63707e' onClick={()=>this.props.homeBack('')}/>easy.com</a></Link>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -31,7 +40,7 @@ class Header extends Component{
                 <ul class="navbar-nav mr-auto">
                     {/* {headerKategori} */}
                     <li class="nav-item">
-                        <Link to="/SD" class="nav-link" style={{color:'#63707e'}} onClick={()=>this.props.onCategory('SD')}>SD</Link>
+                        <Link to="/SD" class="nav-link" style={{color:'#63707e'}} onClick={()=>this.props.onCategory("SD")}>SD</Link>
                     </li>
                     <li class="nav-item">
                         <Link to="/SMP" class="nav-link" style={{color:'#63707e'}} onClick={()=>this.props.onCategory('SMP')}>SMP</Link>
@@ -39,8 +48,11 @@ class Header extends Component{
                     <li class="nav-item">
                         <Link to="/SMA" class="nav-link" style={{color:'#63707e'}} onClick={()=>this.props.onCategory('SMA')}>SMA</Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to="/SBMPTN" class="nav-link" style={{color:'#63707e'}} onClick={()=>this.props.onCategory('SBMPTN')}>SBMPTN</Link>
+                    </li> */}
+                    <li>
+                        <Link to="/Collection" class="nav-link" style={{color:'#63707e'}}>Koleksi</Link>
                     </li>
                 </ul>
                 {/* <Search {...this.props}/> */}
@@ -53,15 +65,25 @@ class Header extends Component{
                   {statusLogin ?
                     (<React.Fragment>
                     <li class="nav-item">
-                        <a className="nav-link" style={{color:'#63707e'}}>Hello, {userName} |</a>
+                        <Link to='/Cart' class="nav-link">
+                            <img src={require('../image/cart.png')} style={{width:'20px'}}/>
+                        </Link>
+                    </li>
+                    <li class="nav-item">
+                        <Link to='/Profile' className="nav-link" style={{color:'#63707e'}}>Hello, {userName} |</Link>
                     </li>
                     <li class="nav-item">
                         <Link class="nav-link" style={{color:'#63707e'}} onClick={this.handleSignOut}>Keluar</Link>
                     </li></React.Fragment>):
-                    (<li class="nav-item">
+                    (<React.Fragment>
+                    <li class="nav-item">
                         <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" type='button' style={{color:'#63707e'}}>Masuk</a>
                         <ModalSignin/>
-                    </li>)
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" data-target="#modalSignUp" type='button' style={{color:'#63707e'}}>Daftar</a>
+                    <ModalSignup/>
+                    </li></React.Fragment>)
                   }
                 </ul>
                 </div>
@@ -71,4 +93,4 @@ class Header extends Component{
     }
 }
 
-export default connect(actions)(withRouter(Header));
+export default connect('',actions)(withRouter(Header));

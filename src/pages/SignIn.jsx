@@ -32,8 +32,6 @@ class SignIn extends React.Component{
                 localStorage.setItem('status_login', true)
                 self.props.history.push("/")
             }
-            
-            console.log("nilai data res",response.data)
         })
         .catch(function(error) {
             alert('invalid username or password')
@@ -57,19 +55,12 @@ class SignIn extends React.Component{
                         </div>
                     </div>
                     <div className="form-group row">
-                        <div className="col-sm-12">
+                        <div className='col-md-4'></div>
+                        <div className='col-md-4 col-sm-12'>
                         <button type="submit" onClick={this.handleLogin} className="btn btn-primary btn-block" data-dismiss="modal">Masuk</button>
                         </div>
-                        <div className="col-sm-12 py-2  row">
-                            <p>Belum punya akun?</p>
-                            <Link to="/Daftar" class="nav-link pt-0 m-0" style={{color:'#145374'}}>Daftar</Link>
-                        </div>
+                        <div className='col-md-4'></div>
                     </div>
-                    {this.props.cekFotoStatus ? 
-                    (<div className="col-sm-12">
-                        <img src={this.props.fotoUrlInput} width={"100%"}/>
-                    </div>) : (<div></div>)
-                    }
                 </form>
             </div>
         )
