@@ -1,11 +1,10 @@
-.navdesign li{
-    
-    font-weight: 500;
+.navdesign li {
+  font-weight: 500;
 }
-.nav-link{
-    color: #ff8364 !important;
+.nav-link {
+  color: #ff8364 !important;
 }
-.nav-link:hover{
-    color: #fdb87d !important;
-    transition: all 0.5s ease;
+.nav-link:hover {
+  color: #fdb87d !important;
+  transition: all 0.5s ease;
 }
