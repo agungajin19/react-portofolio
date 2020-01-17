@@ -4,20 +4,16 @@ import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 
 class ContentLogTransaction extends React.Component{
+    truncate= function(str) {
+        return str.length > 25 ? str.substring(0, 20) + "..." : str;
+    }  
     render(){
         return(
-            <div className='col-md-12 border row'>
-                <div className='col-md-3'>
-                    <img src={this.props.imageLog} style={{width:'100%'}}/>
-                </div>
-                <div className='col-md-6'>
-                    <h5>{this.props.titleLog}</h5>
-                </div>
-                <div className='col-md-3'>
-                    <h6>Harga</h6>
-                    <h6>Rp. {this.props.priceLog}</h6>
-                </div>
-            </div>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{this.truncate(`${this.props.titleLog} ${this.props.jenjangLog} Kelas ${this.props.gradeLog}`)}</td>
+                        <td>Rp. {this.props.priceLog}</td>
+                    </tr>
         )
     }
 }

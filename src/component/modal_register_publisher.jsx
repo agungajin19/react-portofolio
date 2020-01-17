@@ -37,13 +37,19 @@ class ModalRegisterPublisher extends React.Component{
             // <!-- Modal -->
             <div class="modal fade" id="daftarPenerbit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
+                    <div class="modal-content" style={{backgroundColor:'#ffe8d5'}}>
+                        <div class="modal-header text-center" style={{backgroundColor:'#ff8364'}}>
+                            <h5 class="modal-title mx-auto" style={{color:'#ffe8d5'}}>DAFTAR PENERBIT</h5>
+                            <button type="button" class="close ml-0"  data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                         <div class="modal-body">
                             {/* MODAL BODY */}
                         <div className='container align-item-center pr-0'>
                             <form onSubmit={e=> e.preventDefault(e)}>
                                 <div className="form-group row">
-                                    <label for="inputEmail3" className="col-sm-4 col-form-label">Nama Penerbit</label>
+                                    <label for="inputEmail3" className="col-sm-4 col-form-label" style={{color:'#ff8364'}}>Nama Penerbit</label>
                                     <div className="col-sm-8">
                                     <input type="text" name='namaPenerbit' onChange={e=>this.handleMasukan(e)} className="form-control" id="inputEmail3"/>
                                     </div>
@@ -51,7 +57,7 @@ class ModalRegisterPublisher extends React.Component{
                                 <div className="form-group row">
                                     <div className='col-md-4'></div>
                                     <div className='col-md-4 col-sm-12'>
-                                    <button type="submit" onClick={this.handleDaftarPenerbit} className="btn btn-primary btn-block" data-dismiss="modal">Daftar</button>
+                                    <button type="submit" onClick={this.handleDaftarPenerbit} className="btn btn-block" style={{backgroundColor:'#ff8364', color:'#ffe8d5'}} data-dismiss="modal">Daftar</button>
                                     </div>
                                     <div className='col-md-4'></div>
                                 </div>

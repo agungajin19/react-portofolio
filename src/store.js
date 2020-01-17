@@ -39,6 +39,7 @@ const initialState = {
     url_pictureAdd:'',
     deskripsiAdd: '', 
     namaPenerbit:'',
+
 };
 export const store = createStore(initialState)
 
@@ -223,6 +224,29 @@ export const actions = store => ({
             store.setState({isLoading: false})
         })
     },
+    handleDelete : async (state, id) => {
+        const self = this
+        const req = {
+            method: "delete",
+            url: `http://localhost:5000/user/cart`,
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("token")
+            },
+            data:{
+                book_id : id
+            }
+        }
+        console.log('cek id delete', id)
+        Axios(req)
+        .then(function(response) {
+            getCartNew()
+            alert("Hapus barang berhasil")
+        })
+        .catch(function(error) {
+        })
+    },
+    
 
 })
 export const getBookByCondition = async (keyword) =>{
@@ -250,13 +274,48 @@ export const getBookByCategory = async (keyword) =>{
         headers: {
           "Content-Type": "application/json"
         },
-        // data:{
-        //     "jenjang" : keyword
-        // }
     } 
     await Axios(req)
     .then(await function(response) {
         store.setState({listBook : response.data.data, isLoading: false})
+    })
+    .catch(function(error) {
+        store.setState({isLoading: false})
+    })
+}
+export const getCartNew = async ()=>{
+    const req = {
+        method: "get",
+        url: "http://localhost:5000/user/cart",
+        headers: {
+          "Content-Type": "application/json",
+           Authorization: "Bearer " + localStorage.getItem("token")
+        },
+    }
+    Axios(req)
+    .then(function(response) {
+        store.setState({listCart : response.data.data, isLoading:false, totalPrice:response.data.totalprice})
+    })
+    .catch(function(error) {
+        store.setState({isLoading: false})
+    })
+}
+export const getPublisherBookNew = async ()=>{
+    const req = {
+        method: "get",
+        url: "http://localhost:5000/penerbit/book",
+        headers: {
+          "Content-Type": "application/json",
+           Authorization: "Bearer " + localStorage.getItem("token")
+        },
+    }
+    Axios(req)
+    .then(function(response) {
+        store.setState({
+            listPublisherBook : response.data.data,
+            isLoading : false
+        })
+
     })
     .catch(function(error) {
         store.setState({isLoading: false})

@@ -39,27 +39,27 @@ class SignUp extends React.Component{
             <div className='container align-item-center pr-lg-5 pl-lg-5 pt-lg-5'>
             <form onSubmit={e=> e.preventDefault(e)}>
                 <div className="form-group row">
-                    <label for="inputPassword3" className="col-sm-4 col-form-label">Email</label>
+                    <label for="emailinput" className="col-sm-4 col-form-label" style={{color:'#ff8364'}}>Email</label>
                     <div className="col-sm-8">
-                    <input type="email" name='emailDaftar' onChange={e=>this.handleInputDaftar(e)} className="form-control" id="inputPassword3"/>
+                    <input type="email" name='emailDaftar' onChange={e=>this.handleInputDaftar(e)} className="form-control" id="emailinput" />
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label for="inputEmail3" className="col-sm-4 col-form-label">Username</label>
+                    <label for="username" className="col-sm-4 col-form-label" style={{color:'#ff8364'}}>Username</label>
                     <div className="col-sm-8">
-                    <input type="text" name='usernameDaftar' onChange={e=>this.handleInputDaftar(e)} className="form-control" id="inputEmail3"/>
+                    <input type="text" name='usernameDaftar' onChange={e=>this.handleInputDaftar(e)} className="form-control" id="username" />
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label for="inputPassword3" className="col-sm-4 col-form-label">Password</label>
+                    <label for="inputPassword1" className="col-sm-4 col-form-label" style={{color:'#ff8364'}}>Password</label>
                     <div className="col-sm-8">
-                    <input type="password" name='passwordDaftar' onChange={e=>this.handleInputDaftar(e)} className="form-control" id="inputPassword3"/>
+                    <input type="password" name='passwordDaftar' onChange={e=>this.handleInputDaftar(e)} className="form-control" id="inputPassword1"/>
                     </div>
                 </div>
                 <div className="form-group row">
                     <div className='col-md-4'></div>
                     <div className="col-md-4 col-sm-12">
-                    <button type="submit" onClick={this.handleDaftar} className="btn btn-primary btn-block" data-dismiss="modal">Daftar</button>
+                    <button type="submit" style={{backgroundColor:'#ff8364', color:'#ffe8d5'}} onClick={this.handleDaftar} className="btn btn-block" data-dismiss="modal">Daftar</button>
                     </div>
                     <div className='col-md-4'></div>
                     

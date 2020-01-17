@@ -24,7 +24,7 @@ class Collection extends React.Component{
                     publisherCollection = {item.penerbit}  
             />
         })
-        console.log('cek list', listCollection)
+        console.log('cek list collection', listCollection)
 
         return(
             <React.Fragment>
@@ -32,9 +32,13 @@ class Collection extends React.Component{
                 homeBack = {e=>this.props.handleBackHome(e)}
                 prosesSearch={e => this.props.handleSearch(e)}
                 onCategory = {e => this.props.handleCategory(e)}/>
-                <div className='container row mt-5 pl-5'>
+                <div className='container row mt-5 pl-5 mx-auto'>
                     <div className='col-md-12 row'>
-                        {(listCollection===[])?<div style={{textAlign : 'center'}}>Tidak ada koleksi</div>:listAllCollection}
+                        {(listCollection.length === 0)?
+                        <div className='mx-auto text-center'>
+                            <img src={require('../image/emptycollection.png')} style={{width:'50%'}}/>
+                        </div>
+                        :listAllCollection}
                     </div>
 
                 </div>

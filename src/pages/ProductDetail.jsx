@@ -12,6 +12,7 @@ class ProductDetail extends React.Component{
         this.props.handleDetail(this.props.match.params.id)
     }
     render(){
+        const statusLogin = JSON.parse(localStorage.getItem('status_login'))
         return(
             <React.Fragment>
                 <Header
@@ -19,16 +20,30 @@ class ProductDetail extends React.Component{
                 prosesSearch={e => this.props.handleSearch(e)}
                 onCategory = {e => this.props.handleCategory(e)}/>
                 <div className='container-fluid'>
-                    <div className="container">
-                        <h3>{this.props.judul}</h3>
-                        <p>{this.props.jumlahSoal}</p>
-                        <p>{this.props.penerbit}</p>
-                        <p>{this.props.jenjang}</p>
-                        <p>{this.props.kelas}</p>
-                        <h5>{this.props.harga}</h5>
-                        <img src={this.props.url_picture}/>
-                        <p>{this.props.deskripsi}</p>
-                        <button onClick={()=>this.props.addCart(this.props.productId)}>Tambah Keranjang</button>
+                    <div className="container pt-5 mx-auto row">
+                        <div className='col-md-6 col-sm-12 mx-auto'>
+                            
+                            <img className='border rounded' src={this.props.url_picture} style={{width:'50%'}}/>
+                            
+                        </div>
+                        <div className='col-md-6 col-sm-12 border rounded'>
+                            <h3>{this.props.judul} {this.props.jenjang} Kelas {this.props.kelas}</h3>
+                            <p>{this.props.jumlahSoal} Soal</p>
+                            <p>{this.props.penerbit}</p>
+                            <h5>Rp. {this.props.harga}</h5>
+                            {statusLogin?<button type="button" class="btn" style={{backgroundColor:'#ff8364', color:'#ffe8d5'}} onClick={()=>this.props.addCart(this.props.productId)}>Tambah Keranjang</button>
+                            :
+                            <di></di>
+                            }
+                            
+                            <p>Deskripsi : </p>
+                            <p>{this.props.deskripsi}</p>
+                        </div>
+                        
+                        
+                        
+                        
+                        
                     </div>
                 </div>
                 <Footer/>

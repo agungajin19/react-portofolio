@@ -2,7 +2,6 @@ import React from 'react'
 import { actions, store } from "../store";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
-
 import Header from '../component/header'
 import Footer from '../component/footer'
 import ContentHome from '../component/content-home'
@@ -20,7 +19,8 @@ class Home extends React.Component{
                     publisher = {item.penerbit}
                     price = {item.harga}
                     jenjang = {item.jenjang}
-                    id = {item.id}     
+                    id = {item.id}
+                    grade = {item.kelas}     
             />
         })
         return(
@@ -29,8 +29,8 @@ class Home extends React.Component{
                     homeBack = {e=>this.props.handleBackHome(e)}
                     prosesSearch={e => this.props.handleSearch(e)}
                     onCategory = {e => this.props.handleCategory(e)}/>
-                <div className="container-fluid  py-5" style={{backgroundColor:'#f2f6f5'}}>
-                    <div className="container mr-0  row" style={{backgroundColor:'c8dad3'}}>
+                <div className="container-fluid  py-5" style={{backgroundColor:'#fcf9f4e'}}>
+                    <div className="container mx-auto  row" style={{backgroundColor:'c8dad3'}}>
                         {isLoading ? <div style={{textAlign : 'center'}}>Loading ...</div> : listAllBook}
                     </div>
                 </div>

@@ -34,7 +34,7 @@ class Transaction extends React.Component{
         console.log('cek payment', this.props.paymentMethod)
         Axios(req)
         .then(function(response) {
-            console.log('cek respon, ', response)
+            store.setState({listCart:[], totalPrice:0})
             alert(`Pembayaran dengan menggunakan ${response.data.payment_method} sukses!!!`)
             self.props.history.push("/Collection")
         })

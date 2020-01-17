@@ -6,7 +6,7 @@ import { connect } from "unistore/react";
 class ContentProfile extends React.Component{
     render(){
         return(
-            <div>
+            <div className='text-center'>
                 <div>
                     <img  src={require('../image/profile.png')} style={{width:'50%'}}/>
                 </div>

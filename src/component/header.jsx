@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import "../styles/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import { actions, store } from "../store";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
+import '../styles/header.css'
 
 import ModalSignin from './modal_signin'
 import ModalSignup from './modal_signup'
@@ -30,32 +30,36 @@ class Header extends Component{
         const userName = localStorage.getItem('username')
         return(
             <header>
-                <nav class="navbar navbar-expand-lg navbar-light" style={{backgroundColor:'#93b5b3'}}>
-                <Link to="/"><a class="navbar-brand pl-2" onClick={()=>this.props.homeBack('')}><img src={require('../image/logo.png')} alt="logo" width="40px" color='#63707e' onClick={()=>this.props.homeBack('')}/>easy.com</a></Link>
+                <nav class="navbar navbar-expand-lg navbar-light" style={{backgroundColor:'#ffe8d5'}}>
+                <Link to="/" className="navbar-brand pl-2 " style={{color:'#ff4d4d',  fontWeight:'700'}} onClick={()=>this.props.homeBack('')}>
+                    <img src={require('../image/logo.png')} alt="logo" width="40px"  onClick={()=>this.props.homeBack('')}/>
+                    easy.com
+                </Link>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <div class="collapse navbar-collapse navdesign" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto ">
                     {/* {headerKategori} */}
                     <li class="nav-item">
-                        <Link to="/SD" class="nav-link" style={{color:'#63707e'}} onClick={()=>this.props.onCategory("SD")}>SD</Link>
+                        <Link to="/SD" class="nav-link"  onClick={()=>this.props.onCategory("SD")}>SD</Link>
                     </li>
                     <li class="nav-item">
-                        <Link to="/SMP" class="nav-link" style={{color:'#63707e'}} onClick={()=>this.props.onCategory('SMP')}>SMP</Link>
+                        <Link to="/SMP" class="nav-link"  onClick={()=>this.props.onCategory('SMP')}>SMP</Link>
                     </li>
                     <li class="nav-item">
-                        <Link to="/SMA" class="nav-link" style={{color:'#63707e'}} onClick={()=>this.props.onCategory('SMA')}>SMA</Link>
+                        <Link to="/SMA" class="nav-link"  onClick={()=>this.props.onCategory('SMA')}>SMA</Link>
                     </li>
-                    {/* <li>
-                        <Link to="/SBMPTN" class="nav-link" style={{color:'#63707e'}} onClick={()=>this.props.onCategory('SBMPTN')}>SBMPTN</Link>
-                    </li> */}
-                    <li>
-                        <Link to="/Collection" class="nav-link" style={{color:'#63707e'}}>Koleksi</Link>
-                    </li>
+                    {statusLogin ?
+                     <li>
+                        <Link to="/Collection" class="nav-link" >Koleksi</Link>
+                    </li>:
+                    <div></div>
+                    }
+                    
                 </ul>
-                {/* <Search {...this.props}/> */}
+
                 <ul class="navbar-nav ml-lg-5">
                     <li>
                         <form class="form-inline my-2 my-lg-0">
@@ -70,18 +74,18 @@ class Header extends Component{
                         </Link>
                     </li>
                     <li class="nav-item">
-                        <Link to='/Profile' className="nav-link" style={{color:'#63707e'}}>Hello, {userName} |</Link>
+                        <Link to='/Profile' className="nav-link" >Hello, {userName} |</Link>
                     </li>
                     <li class="nav-item">
-                        <Link class="nav-link" style={{color:'#63707e'}} onClick={this.handleSignOut}>Keluar</Link>
+                        <Link class="nav-link"  onClick={this.handleSignOut}>Keluar</Link>
                     </li></React.Fragment>):
                     (<React.Fragment>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" type='button' style={{color:'#63707e'}}>Masuk</a>
+                        <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" type='button' >Masuk</a>
                         <ModalSignin/>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="modal" data-target="#modalSignUp" type='button' style={{color:'#63707e'}}>Daftar</a>
+                        <a class="nav-link" data-toggle="modal" data-target="#modalSignUp" type='button' >Daftar</a>
                     <ModalSignup/>
                     </li></React.Fragment>)
                   }

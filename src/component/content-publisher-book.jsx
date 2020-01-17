@@ -4,17 +4,20 @@ import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 
 class PublisherBook extends React.Component{
+    truncate= function(str) {
+        return str.length > 25 ? str.substring(0, 20) + "..." : str;
+    }  
     render(){
         return(
             <div className='col-md-12 border row'>
                 <div className='col-md-3'>
-                    <img src={this.props.image} style={{width:'100%'}}/>
+                    <img className='border rounded' src={this.props.image} style={{width:'100%'}}/>
                 </div>
                 <div className='col-md-6'>
-                    <h5>{this.props.title}</h5>
-                    <p>Mata Pelajaran {this.props.subject}</p>
-                    <p>Kelas {this.props.grade} {this.props.jenjang}</p>
-                    <p>Jumlah Soal {this.props.soal}</p>
+                    
+                    <h5 style={{fontSize:"12pt", color: "#ff8364"}}>{this.truncate(`${this.props.title} ${this.props.jenjang} Kelas ${this.props.grade}`)}</h5>
+                    
+                    <p>{this.props.soal} Soal</p>
 
                 </div>
                 <div className='col-md-3'>

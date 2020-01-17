@@ -17,7 +17,6 @@ const MainRoute = () => {
                 <Route exact path='/SD' component={Home}/>
                 <Route exact path='/SMP' component={Home}/>
                 <Route exact path='/SMA' component={Home}/>
-                <Route exact path='/SBMPTN' component={Home}/>
                 <Route exact path='/ProductDetail/:id' component={ProductDetail}/>
                 <Route exact path='/Cart' component={Cart}/>
                 <Route exact path='/Collection' component={Collection}/>

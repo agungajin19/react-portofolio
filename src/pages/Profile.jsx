@@ -23,7 +23,9 @@ class Profile extends React.Component{
             return <ContentLogTransaction
                     titleLog = {item.judul}
                     imageLog = {item.url_picture}
-                    priceLog = {item.price}    
+                    priceLog = {item.price}
+                    jenjangLog = {item.jenjang}
+                    gradeLog = {item.kelas}    
             />
         })
 
@@ -47,17 +49,27 @@ class Profile extends React.Component{
                 onCategory = {e => this.props.handleCategory(e)}/>
                 {this.props.statusPenerbit ?
                     (<div className='container-fluid row'>
-                        <div className='col-md-3'>
+                        <div className='col-md-3 text-center'>
                             <ContentProfile/>
-                            <button class="nav-link btn btn-info" data-toggle="modal" data-target="#tambahBuku" type='button' style={{color:'#63707e'}}>Tambah Buku</button>
+                            <button class="btn mx-auto" data-toggle="modal" data-target="#tambahBuku" type='button' style={{backgroundColor:'#ff8364', color:'#ffe8d5'}}>Tambah Buku</button>
                             <ModalAddBook/>
                         </div>
                         <div className='col-md-5'>
-                            <div className='border'>
-                                {/* <h5>Total Transaksi</h5> */}
+                            <div>
                                 <h5>Total Keuntungan Rp. {this.props.totalRevenue}</h5>
                             </div>
-                            {listAllLogTransaction}   
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Judul</th>
+                                    <th scope="col">Harga</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {listAllLogTransaction}   
+                                </tbody>
+                                </table>
                         </div>
                         <div className='col-md-4'>
                             <h3>Daftar Buku Terbitan</h3>
@@ -66,14 +78,20 @@ class Profile extends React.Component{
 
                     </div>)
                     :
-                    (<div className='container-fluid row' >
-                        <div className='col-md-4'></div>
-                        <div className=' align-content-center col-md-4'>
-                            <ContentProfile/>
-                            <button class="nav-link btn btn-info" data-toggle="modal" data-target="#daftarPenerbit" type='button' style={{color:'#63707e'}}>Daftar Penerbit</button>
-                            <ModalRegisterPublisher/>
+                    (<div className='container-fluid' >
+                        <div className='container'>
+                            <div className='row pt-5'>
+                                <div className='col-md-4'></div>
+                                <div className='col-md-4 border rounded text-center' style={{backgroundColor:'#fffafa'}}>
+                                    <div className='pt-3 pb-3'>
+                                        <ContentProfile/>
+                                        <button class="btn" data-toggle="modal" data-target="#daftarPenerbit" type='button' style={{backgroundColor:'#ff8364', color:'#ffe8d5'}}>Daftar Penerbit</button>
+                                        <ModalRegisterPublisher/>
+                                    </div>
+                                </div>
+                                <div className='col-md-4'></div>
+                            </div>
                         </div>
-                        <div className='col-md-4'></div>
                     </div>)
             }
                 <Footer/>
