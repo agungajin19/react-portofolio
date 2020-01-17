@@ -1,10 +1,8 @@
 import React from 'react'
-import { actions, store } from "../store";
+import { actions} from "../store";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 import { Link } from "react-router-dom";
-
-
 import Header from '../component/header'
 import Footer from '../component/footer'
 import ContentCart from '../component/content-cart'
@@ -50,7 +48,7 @@ class Cart extends React.Component{
                                 <div></div>
                                 :
                                 <Link to='/Transaction'>
-                                    <button type="button" class="btn btn-info">Checkout</button>
+                                    <button type="button" class="btn" style={{backgroundColor:'#ff8364', color:'#ffe8d5'}}>Checkout</button>
                                 </Link>
                             }
                             </div>

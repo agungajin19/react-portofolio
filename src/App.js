@@ -1,7 +1,7 @@
 import React from 'react';
+import { Provider } from 'unistore/react';
 import MainRoute from './routes/main-route';
-import { Provider } from "unistore/react";
-import { store } from "./store";
+import { store } from './store';
 import './styles/bootstrap.min.css';
 
 

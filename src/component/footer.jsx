@@ -1,7 +1,7 @@
-import React from 'react'
-import '../styles/footer.css'
+import React from 'react';
+import '../styles/footer.css';
 import { Link } from "react-router-dom";
-import { actions, store } from "../store";
+import { actions } from "../store";
 import { withRouter } from "react-router-dom";
 import { connect } from "unistore/react";
 
@@ -24,7 +24,7 @@ class Footer extends React.Component{
                     </div>
 
                     <div class="col-lg-3 col-xs-12 links">
-                        <Link to="/" className="navbar-brand pl-2 " style={{color:'#ff4d4d',  fontWeight:'700'}} onClick={()=>this.props.homeBack('')}>
+                        <Link to="/" className="navbar-brand pl-2 " style={{color:'#ff4d4d',  fontWeight:'700', fontSize:'20pt'}} onClick={()=>this.props.homeBack('')}>
                         <img src={require('../image/logo.png')} alt="logo" width="70%"  onClick={()=>this.props.homeBack('')}/>
                         easy.com
                         </Link>

@@ -18,7 +18,7 @@ class Profile extends React.Component{
         this.props.getProfile()
     }
     render(){
-        const{listLogTransaction, isLoading, listPublisherBook} = this.props
+        const{listLogTransaction, listPublisherBook} = this.props
         const listAllLogTransaction = listLogTransaction.map(item =>{
             return <ContentLogTransaction
                     titleLog = {item.judul}
@@ -48,7 +48,7 @@ class Profile extends React.Component{
                 prosesSearch={e => this.props.handleSearch(e)}
                 onCategory = {e => this.props.handleCategory(e)}/>
                 {this.props.statusPenerbit ?
-                    (<div className='container-fluid row'>
+                    (<div className='container-fluid row pt-5'>
                         <div className='col-md-3 text-center'>
                             <ContentProfile/>
                             <button class="btn mx-auto" data-toggle="modal" data-target="#tambahBuku" type='button' style={{backgroundColor:'#ff8364', color:'#ffe8d5'}}>Tambah Buku</button>
@@ -71,7 +71,7 @@ class Profile extends React.Component{
                                 </tbody>
                                 </table>
                         </div>
-                        <div className='col-md-4'>
+                        <div className='col-md-4 text-center'>
                             <h3>Daftar Buku Terbitan</h3>
                             {listAllPublisherBook}
                         </div>

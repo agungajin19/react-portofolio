@@ -115,7 +115,7 @@ class AddBook extends React.Component{
                 <div className="form-group row">
                     <div className='col-md-4'></div>
                     <div className="col-md-4 col-sm-12">
-                    <button type="submit" onClick={this.handleAddBook} className="btn btn-primary btn-block" data-dismiss="modal">Tambah</button>
+                    <button type="submit" onClick={this.handleAddBook} className="btn btn-block" style={{backgroundColor:'#ff8364', color:'#ffe8d5'}} data-dismiss="modal">Tambah</button>
                     </div>
                     <div className='col-md-4'></div>
                     
