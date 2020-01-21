@@ -1,7 +1,6 @@
 import createStore from 'unistore';
 import Axios from 'axios';
 
-
 const initialState = {
   isLoading: true,
   username: '',
@@ -39,25 +38,25 @@ const initialState = {
   url_pictureAdd: '',
   deskripsiAdd: '',
   namaPenerbit: '',
-
+  base_url: 'https://easy.my.id'
 };
 export const store = createStore(initialState);
 
-export const actions = (store) => ({
+export const actions = store => ({
   getBook: () => {
     const self = this;
     const req = {
       method: 'get',
-      url: 'http://localhost:5000/public/book',
+      url: 'https://easy.my.id/public/book',
       headers: {
-        'Content-Type': 'application/json',
-      },
+        'Content-Type': 'application/json'
+      }
     };
     Axios(req)
-      .then((response) => {
+      .then(response => {
         store.setState({ listBook: response.data.data, isLoading: false });
       })
-      .catch((error) => {
+      .catch(error => {
         store.setState({ isLoading: false });
       });
   },
@@ -77,13 +76,13 @@ export const actions = (store) => ({
     const self = this;
     const req = {
       method: 'get',
-      url: `http://localhost:5000/user/book/${id}`,
+      url: `https://easy.my.id/user/book/${id}`,
       headers: {
-        'Content-Type': 'application/json',
-      },
+        'Content-Type': 'application/json'
+      }
     };
     Axios(req)
-      .then((response) => {
+      .then(response => {
         store.setState({
           judul: response.data.judul,
           jumlahSoal: response.data.jumlah_soal,
@@ -95,129 +94,132 @@ export const actions = (store) => ({
           kelas: response.data.kelas,
           mataPelajaran: response.data.matapelajaran,
           isLoading: false,
-          productId: response.data.id,
+          productId: response.data.id
         });
       })
-      .catch((error) => {
-      });
+      .catch(error => {});
   },
   addCart: async (state, e) => {
     const self = this;
     const id = e;
     const req = {
       method: 'post',
-      url: 'http://localhost:5000/user/cart',
+      url: 'https://easy.my.id/user/cart',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${localStorage.getItem('token')}`
       },
       data: {
-        book_id: id,
-      },
+        book_id: id
+      }
     };
     Axios(req)
-      .then((response) => {
+      .then(response => {
         alert('Soal berhasil ditambahkan');
       })
-      .catch((error) => {
+      .catch(error => {
         alert('Anda sudah menambahkan soal ini ke keranjang atau koleksi');
       });
   },
-  getCart: async (state) => {
+  getCart: async state => {
     const req = {
       method: 'get',
-      url: 'http://localhost:5000/user/cart',
+      url: 'https://easy.my.id/user/cart',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
     };
     Axios(req)
-      .then((response) => {
-        store.setState({ listCart: response.data.data, isLoading: false, totalPrice: response.data.totalprice });
+      .then(response => {
+        store.setState({
+          listCart: response.data.data,
+          isLoading: false,
+          totalPrice: response.data.totalprice
+        });
       })
-      .catch((error) => {
+      .catch(error => {
         store.setState({ isLoading: false });
       });
   },
-  getCollection: async (state) => {
+  getCollection: async state => {
     const req = {
       method: 'get',
-      url: 'http://localhost:5000/user/collection',
+      url: 'https://easy.my.id/user/collection',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
     };
     Axios(req)
-      .then((response) => {
+      .then(response => {
         store.setState({ listCollection: response.data.data, isLoading: false });
         console.log('cek list collection axios', state.listCollection);
       })
-      .catch((error) => {
+      .catch(error => {
         store.setState({ isLoading: false });
       });
   },
-  getProfile: async (state) => {
+  getProfile: async state => {
     const req = {
       method: 'get',
-      url: 'http://localhost:5000/user/me',
+      url: 'https://easy.my.id/user/me',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
     };
     Axios(req)
-      .then((response) => {
+      .then(response => {
         store.setState({
           usernameProfile: response.data.username,
           emailProfile: response.data.email,
           statusPenerbit: response.data.status_penerbit,
-          isLoading: false,
+          isLoading: false
         });
       })
-      .catch((error) => {
+      .catch(error => {
         store.setState({ isLoading: false });
       });
   },
-  getLogTransaction: async (state) => {
+  getLogTransaction: async state => {
     const req = {
       method: 'get',
-      url: 'http://localhost:5000/penerbit/transaction',
+      url: 'https://easy.my.id/penerbit/transaction',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
     };
     Axios(req)
-      .then((response) => {
+      .then(response => {
         store.setState({
           listLogTransaction: response.data.transactions,
           totalRevenue: response.data.total_revenue,
-          isLoading: false,
+          isLoading: false
         });
       })
-      .catch((error) => {
+      .catch(error => {
         store.setState({ isLoading: false });
       });
   },
-  getPublisherBook: async (state) => {
+  getPublisherBook: async state => {
     const req = {
       method: 'get',
-      url: 'http://localhost:5000/penerbit/book',
+      url: 'https://easy.my.id/penerbit/book',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
     };
     Axios(req)
-      .then((response) => {
+      .then(response => {
         store.setState({
           listPublisherBook: response.data.data,
-          isLoading: false,
+          isLoading: false
         });
       })
-      .catch((error) => {
+      .catch(error => {
         store.setState({ isLoading: false });
       });
   },
@@ -225,95 +227,98 @@ export const actions = (store) => ({
     const self = this;
     const req = {
       method: 'delete',
-      url: 'http://localhost:5000/user/cart',
+      url: 'https://easy.my.id/user/cart',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${localStorage.getItem('token')}`
       },
       data: {
-        book_id: id,
-      },
+        book_id: id
+      }
     };
     console.log('cek id delete', id);
     Axios(req)
-      .then((response) => {
+      .then(response => {
         getCartNew();
         alert('Hapus barang berhasil');
       })
-      .catch((error) => {
-      });
-  },
-
-
+      .catch(error => {});
+  }
 });
-export const getBookByCondition = async (keyword) => {
+export const getBookByCondition = async keyword => {
   const self = this;
   const req = {
     method: 'get',
-    url: `http://localhost:5000/public/book?search=${keyword}`,
+    url: `https://easy.my.id/public/book?search=${keyword}`,
     headers: {
-      'Content-Type': 'application/json',
-    },
+      'Content-Type': 'application/json'
+    }
   };
   Axios(req)
-    .then((response) => {
+    .then(response => {
       store.setState({ listBook: response.data.data, isLoading: false });
     })
-    .catch((error) => {
+    .catch(error => {
       store.setState({ isLoading: false });
     });
 };
-export const getBookByCategory = async (keyword) => {
+export const getBookByCategory = async keyword => {
   const self = this;
   const req = {
     method: 'get',
-    url: `http://localhost:5000/public/book?jenjang=${keyword}`,
+    url: `https://easy.my.id/public/book?jenjang=${keyword}`,
     headers: {
-      'Content-Type': 'application/json',
-    },
+      'Content-Type': 'application/json'
+    }
   };
   await Axios(req)
-    .then(await function (response) {
-      store.setState({ listBook: response.data.data, isLoading: false });
-    })
-    .catch((error) => {
+    .then(
+      await function(response) {
+        store.setState({ listBook: response.data.data, isLoading: false });
+      }
+    )
+    .catch(error => {
       store.setState({ isLoading: false });
     });
 };
 export const getCartNew = async () => {
   const req = {
     method: 'get',
-    url: 'http://localhost:5000/user/cart',
+    url: 'https://easy.my.id/user/cart',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-    },
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
   };
   Axios(req)
-    .then((response) => {
-      store.setState({ listCart: response.data.data, isLoading: false, totalPrice: response.data.totalprice });
+    .then(response => {
+      store.setState({
+        listCart: response.data.data,
+        isLoading: false,
+        totalPrice: response.data.totalprice
+      });
     })
-    .catch((error) => {
+    .catch(error => {
       store.setState({ isLoading: false });
     });
 };
 export const getPublisherBookNew = async () => {
   const req = {
     method: 'get',
-    url: 'http://localhost:5000/penerbit/book',
+    url: 'https://easy.my.id/penerbit/book',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-    },
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
   };
   Axios(req)
-    .then((response) => {
+    .then(response => {
       store.setState({
         listPublisherBook: response.data.data,
-        isLoading: false,
+        isLoading: false
       });
     })
-    .catch((error) => {
+    .catch(error => {
       store.setState({ isLoading: false });
     });
 };

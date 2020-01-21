@@ -17,6 +17,8 @@ class Header extends Component {
       statusPenerbit: false,
       listLogTransaction: [],
       listPublisherBook: [],
+      listCollection: [],
+      listCart: [],
       usernameProfile: '',
       emailProfile: '',
       totalRevenue: 0

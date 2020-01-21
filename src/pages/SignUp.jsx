@@ -14,7 +14,7 @@ class SignUp extends React.Component {
     const self = this;
     const req = {
       method: 'post',
-      url: 'http://localhost:5000/user/register',
+      url: 'https://easy.my.id/user/register',
       headers: {
         'Content-Type': 'application/json'
       },

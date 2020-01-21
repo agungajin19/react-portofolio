@@ -22,7 +22,7 @@ class Transaction extends React.Component {
     let payment = e;
     const req = {
       method: 'post',
-      url: 'http://localhost:5000/user/payment',
+      url: 'https://easy.my.id/user/payment',
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + localStorage.getItem('token')

@@ -9,7 +9,7 @@ class PublisherBook extends React.Component {
   };
   render() {
     return (
-      <div className="col-md-12 mb-2 border row">
+      <div className="col-md-12 mb-2 mx-auto border row">
         <div className="col-md-3">
           <img className="border rounded" src={this.props.image} style={{ width: '100%' }} />
         </div>
@@ -20,7 +20,7 @@ class PublisherBook extends React.Component {
 
           <p>{this.props.soal} Soal</p>
         </div>
-        <div className="col-md-3">
+        <div className="col-md-3 p-0">
           <h6>Harga</h6>
           <h6>Rp. {this.props.price}</h6>
         </div>

@@ -14,7 +14,7 @@ class AddBook extends React.Component {
     const self = this;
     const req = {
       method: 'post',
-      url: 'http://localhost:5000/penerbit/book',
+      url: 'https://easy.my.id/penerbit/book',
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + localStorage.getItem('token')

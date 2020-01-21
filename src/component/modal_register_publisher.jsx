@@ -13,7 +13,7 @@ class ModalRegisterPublisher extends React.Component {
     const self = this;
     const req = {
       method: 'post',
-      url: 'http://localhost:5000/penerbit/register',
+      url: 'https://easy.my.id/penerbit/register',
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + localStorage.getItem('token')

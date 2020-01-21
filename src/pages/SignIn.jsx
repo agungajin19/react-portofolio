@@ -14,7 +14,7 @@ class SignIn extends React.Component {
     const self = this;
     const req = {
       method: 'post',
-      url: 'http://localhost:5000/user/login',
+      url: 'https://easy.my.id/user/login',
       headers: {
         'Content-Type': 'application/json'
       },
