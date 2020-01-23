@@ -22,7 +22,7 @@ class ProductDetail extends React.Component {
         />
         <div className="container-fluid">
           <div className="container pt-5 mx-auto row">
-            <div className="col-md-6 col-sm-12 mx-auto">
+            <div className="col-md-6 col-12 mx-auto">
               <img
                 className="border rounded"
                 src={this.props.url_picture}
@@ -30,7 +30,7 @@ class ProductDetail extends React.Component {
               />
             </div>
             <div
-              className="col-md-6 col-sm-12 border rounded"
+              className="col-md-6 col-12 border rounded"
               style={{ backgroundColor: '#fffafa' }}
             >
               <h3 style={{ color: '#ff8364' }}>

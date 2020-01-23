@@ -10,6 +10,7 @@ import ContentLogTransaction from '../component/content-log-transaction-';
 import ContentPublisherBook from '../component/content-publisher-book';
 import ModalAddBook from '../component/modal_addbook';
 import ModalRegisterPublisher from '../component/modal_register_publisher';
+import ModalEditBook from '../component/modal_editbook'
 
 class Profile extends React.Component {
   componentDidMount = () => {
@@ -42,6 +43,7 @@ class Profile extends React.Component {
           grade={item.kelas}
           subject={item.matapelajaran}
           soal={item.jumlah_soal}
+          id={item.id}
         />
       );
     });
@@ -86,6 +88,7 @@ class Profile extends React.Component {
             <div className="col-md-4 text-center">
               <h5 style={{ color: 'ff8364' }}>Daftar Buku Terbitan</h5>
               {listAllPublisherBook}
+              <ModalEditBook/>
             </div>
           </div>
         ) : (

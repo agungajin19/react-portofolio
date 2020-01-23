@@ -5,7 +5,7 @@ import { connect } from 'unistore/react';
 
 class ContentLogTransaction extends React.Component {
   truncate = function(str) {
-    return str.length > 25 ? str.substring(0, 20) + '...' : str;
+    return str.length > 40 ? str.substring(0, 20) + '...' : str;
   };
   render() {
     return (

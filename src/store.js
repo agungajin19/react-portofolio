@@ -38,7 +38,11 @@ const initialState = {
   url_pictureAdd: '',
   deskripsiAdd: '',
   namaPenerbit: '',
-  base_url: 'https://easy.my.id'
+  judulEdit: '',
+  urlEdit: '',
+  hargaEdit: 0,
+  deskirpsiEdit: '',
+  base_url: 'https://easy.my.id',
 };
 export const store = createStore(initialState);
 
@@ -71,33 +75,6 @@ export const actions = store => ({
   handleCategory: async (state, e) => {
     const keyword = e;
     await getBookByCategory(keyword);
-  },
-  handleDetail: async (state, id) => {
-    const self = this;
-    const req = {
-      method: 'get',
-      url: `https://easy.my.id/user/book/${id}`,
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-    Axios(req)
-      .then(response => {
-        store.setState({
-          judul: response.data.judul,
-          jumlahSoal: response.data.jumlah_soal,
-          penerbit: response.data.nama_penerbit,
-          harga: response.data.harga,
-          url_picture: response.data.url_picture,
-          deskripsi: response.data.deskripsi,
-          jenjang: response.data.jenjang,
-          kelas: response.data.kelas,
-          mataPelajaran: response.data.matapelajaran,
-          isLoading: false,
-          productId: response.data.id
-        });
-      })
-      .catch(error => {});
   },
   addCart: async (state, e) => {
     const self = this;
@@ -236,12 +213,61 @@ export const actions = store => ({
         book_id: id
       }
     };
-    console.log('cek id delete', id);
     Axios(req)
       .then(response => {
         getCartNew();
         alert('Hapus barang berhasil');
       })
+      .catch(error => {});
+  },
+  handleDetail: async (state, id) => {
+    const self = this;
+    const req = {
+      method: 'get',
+      url: `https://easy.my.id/user/book/${id}`,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    Axios(req)
+      .then(response => {
+        store.setState({
+          judul: response.data.judul,
+          jumlahSoal: response.data.jumlah_soal,
+          penerbit: response.data.nama_penerbit,
+          harga: response.data.harga,
+          url_picture: response.data.url_picture,
+          deskripsi: response.data.deskripsi,
+          jenjang: response.data.jenjang,
+          kelas: response.data.kelas,
+          mataPelajaran: response.data.matapelajaran,
+          isLoading: false,
+          productId: response.data.id
+        });
+      })
+      .catch(error => {});
+  },
+  handleIdEdit: async (state, id) => {
+    const self = this;
+    console.log('cek id', id)
+    const req = {
+      method: 'get',
+      url: `https://easy.my.id/penerbit/book/${id}`,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      },
+    };
+    Axios(req)
+      .then(response => {
+        store.setState({
+          judulEdit: response.data.judul,
+          urlEdit: response.data.url_picture,
+          hargaEdit: response.data.harga,
+          deskripsiEdit: response.data.deskripsi,
+      })
+      console.log('tes edit', state.judulEdit)
+    })
       .catch(error => {});
   }
 });

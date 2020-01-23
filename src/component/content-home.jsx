@@ -11,7 +11,7 @@ class ContentHome extends React.Component {
   };
   render() {
     return (
-      <div className=" col-md-2 px-auto py-2 rounded">
+      <div className=" col-sm-3 col-md-2 col-6 px-auto py-2 rounded">
         <div class="card text-center" style={{ border: 'None', backgroundColor: '#fffafa' }}>
           <Link to={'/ProductDetail/' + this.props.id}>
             <img
