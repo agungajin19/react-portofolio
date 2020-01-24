@@ -266,7 +266,6 @@ export const actions = store => ({
           hargaEdit: response.data.harga,
           deskripsiEdit: response.data.deskripsi,
       })
-      console.log('tes edit', state.judulEdit)
     })
       .catch(error => {});
   }
