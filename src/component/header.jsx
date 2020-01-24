@@ -102,7 +102,7 @@ class Header extends Component {
                 <React.Fragment>
                   <li class="nav-item">
                     <Link to="/Cart" class="nav-link">
-                      <img src={require('../image/cart.png')} style={{ width: '20px' }} />
+                      <img src={require('../image/cart.png')} alt='keranjang' style={{ width: '20px' }} />
                     </Link>
                   </li>
                   <li class="nav-item">

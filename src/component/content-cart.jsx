@@ -1,14 +1,13 @@
 import React from 'react';
-import { actions, store } from '../store';
+import { actions } from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
-import { Link } from 'react-router-dom';
 
 const ContentCart = props => {
   return (
     <div className="col-md-12 p-0 mb-2 border row" style={{ backgroundColor: '#fffafa' }}>
       <div className="col-md-3">
-        <img src={props.imageCart} style={{ width: '100%' }} />
+        <img src={props.imageCart} alt='' style={{ width: '100%' }} />
       </div>
       <div className="col-md-5">
         <h5>{props.titleCart}</h5>

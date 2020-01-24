@@ -2,12 +2,10 @@ import React from 'react';
 import { store } from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
-import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
 class SignUp extends React.Component {
   handleInputDaftar = e => {
-    const self = this;
     store.setState({ [e.target.name]: e.target.value });
   };
   handleDaftar = () => {

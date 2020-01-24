@@ -6,7 +6,6 @@ import { connect } from 'unistore/react';
 
 class ModalRegisterPublisher extends React.Component {
   handleMasukan = e => {
-    const self = this;
     store.setState({ [e.target.name]: e.target.value });
   };
   handleDaftarPenerbit = () => {

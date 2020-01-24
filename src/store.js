@@ -48,7 +48,6 @@ export const store = createStore(initialState);
 
 export const actions = store => ({
   getBook: () => {
-    const self = this;
     const req = {
       method: 'get',
       url: 'https://easy.my.id/public/book',
@@ -77,7 +76,6 @@ export const actions = store => ({
     await getBookByCategory(keyword);
   },
   addCart: async (state, e) => {
-    const self = this;
     const id = e;
     const req = {
       method: 'post',
@@ -201,7 +199,6 @@ export const actions = store => ({
       });
   },
   handleDelete: async (state, id) => {
-    const self = this;
     const req = {
       method: 'delete',
       url: 'https://easy.my.id/user/cart',
@@ -221,7 +218,6 @@ export const actions = store => ({
       .catch(error => {});
   },
   handleDetail: async (state, id) => {
-    const self = this;
     const req = {
       method: 'get',
       url: `https://easy.my.id/user/book/${id}`,
@@ -248,7 +244,6 @@ export const actions = store => ({
       .catch(error => {});
   },
   handleIdEdit: async (state, id) => {
-    const self = this;
     console.log('cek id', id)
     const req = {
       method: 'get',
@@ -271,7 +266,6 @@ export const actions = store => ({
   }
 });
 export const getBookByCondition = async keyword => {
-  const self = this;
   const req = {
     method: 'get',
     url: `https://easy.my.id/public/book?search=${keyword}`,
@@ -288,7 +282,6 @@ export const getBookByCondition = async keyword => {
     });
 };
 export const getBookByCategory = async keyword => {
-  const self = this;
   const req = {
     method: 'get',
     url: `https://easy.my.id/public/book?jenjang=${keyword}`,

@@ -3,11 +3,9 @@ import Axios from 'axios';
 import { store } from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
-import { Link } from 'react-router-dom';
 
 class SignIn extends React.Component {
   handleMasukan = e => {
-    const self = this;
     store.setState({ [e.target.name]: e.target.value });
   };
   handleLogin = () => {

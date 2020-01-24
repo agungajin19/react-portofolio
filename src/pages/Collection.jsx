@@ -1,8 +1,7 @@
 import React from 'react';
-import { actions, store } from '../store';
+import { actions} from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
-import { Link } from 'react-router-dom';
 
 import Header from '../component/header';
 import Footer from '../component/footer';
@@ -13,7 +12,7 @@ class Collection extends React.Component {
     this.props.getCollection();
   };
   render() {
-    const { listCollection, isLoading } = this.props;
+    const { listCollection} = this.props;
     const listAllCollection = listCollection.map(item => {
       return (
         <ContentCollection
@@ -39,7 +38,7 @@ class Collection extends React.Component {
           <div className="row mx-auto">
             {listCollection.length === 0 ? (
               <div className="mx-auto text-center">
-                <img src={require('../image/emptycollection.png')} style={{ width: '50%' }} />
+                <img src={require('../image/emptycollection.png')} alt='empty' style={{ width: '50%' }} />
               </div>
             ) : (
               listAllCollection

@@ -1,15 +1,14 @@
 import React from 'react';
-import { actions, store } from '../store';
+import { actions} from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
-import { Link } from 'react-router-dom';
 
 class ContentCollection extends React.Component {
   render() {
     return (
       <div className="col-md-6 border row">
         <div className="col-md-6">
-          <img src={this.props.imageCollection} style={{ width: '100%' }} />
+          <img src={this.props.imageCollection} alt='book' style={{ width: '100%' }} />
         </div>
         <div className="col-md-6">
           <h5>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { actions, store } from '../store';
+import { actions} from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import { Link } from 'react-router-dom';
-import TextTruncate from 'react-text-truncate';
+
 
 class ContentHome extends React.Component {
   truncate = function(str) {

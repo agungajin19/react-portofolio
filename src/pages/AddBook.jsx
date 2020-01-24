@@ -2,13 +2,11 @@ import React from 'react';
 import { store, actions } from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
-import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
 // ADDBOOK
 class AddBook extends React.Component {
   handleInputAddBook = e => {
-    const self = this;
     store.setState({ [e.target.name]: e.target.value });
   };
   handleAddBook = async () => {

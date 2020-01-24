@@ -2,12 +2,10 @@ import React from 'react';
 import { store, actions } from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
-import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
 class EditBook extends React.Component {
   handleInputEditBook = e => {
-    const self = this;
     store.setState({ [e.target.name]: e.target.value });
   };
   handleEditBook = async () => {

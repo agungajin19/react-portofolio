@@ -3,7 +3,6 @@ import Axios from 'axios';
 import { actions, store } from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
-import { Link } from 'react-router-dom';
 
 import Header from '../component/header';
 import Footer from '../component/footer';
@@ -14,12 +13,10 @@ class Transaction extends React.Component {
     this.props.getCart();
   };
   handleInputTransaction = e => {
-    const self = this;
     store.setState({ [e.target.name]: e.target.value });
   };
-  handlePayment = (state, e) => {
+  handlePayment = (state) => {
     const self = this;
-    let payment = e;
     const req = {
       method: 'post',
       url: 'https://easy.my.id/user/payment',
@@ -44,7 +41,7 @@ class Transaction extends React.Component {
       });
   };
   render() {
-    const { listCart, isLoading } = this.props;
+    const { listCart} = this.props;
     const listAllCart = listCart.map(item => {
       return (
         <ContentTransaction

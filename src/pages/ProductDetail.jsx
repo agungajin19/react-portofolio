@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
-import { Link } from 'react-router-dom';
 
 import Header from '../component/header';
 import Footer from '../component/footer';
@@ -27,6 +26,7 @@ class ProductDetail extends React.Component {
                 className="border rounded"
                 src={this.props.url_picture}
                 style={{ width: '50%' }}
+                alt='book'
               />
             </div>
             <div
