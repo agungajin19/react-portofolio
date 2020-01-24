@@ -72,7 +72,7 @@ class Header extends Component {
               </li>
               <li class="nav-item">
                 <Link to="/SMA" class="nav-link" onClick={() => this.props.onCategory('SMA')}>
-                  SMA
+                  SMK
                 </Link>
               </li>
               {statusLogin ? (
