@@ -43,7 +43,7 @@ class Header extends Component {
               width="40px"
               onClick={() => this.props.homeBack('')}
             />
-            easy.com
+            easy.my.id
           </Link>
           <button
             class="navbar-toggler"
