@@ -26,13 +26,10 @@ class ProductDetail extends React.Component {
                 className="border rounded"
                 src={this.props.url_picture}
                 style={{ width: '50%' }}
-                alt='book'
+                alt="book"
               />
             </div>
-            <div
-              className="col-md-6 col-12 border rounded"
-              style={{ backgroundColor: '#fffafa' }}
-            >
+            <div className="col-md-6 col-12 border rounded" style={{ backgroundColor: '#fffafa' }}>
               <h3 style={{ color: '#ff8364' }}>
                 {this.props.judul} {this.props.jenjang} Kelas {this.props.kelas}
               </h3>

@@ -15,7 +15,7 @@ class Transaction extends React.Component {
   handleInputTransaction = e => {
     store.setState({ [e.target.name]: e.target.value });
   };
-  handlePayment = (state) => {
+  handlePayment = state => {
     const self = this;
     const req = {
       method: 'post',
@@ -41,7 +41,7 @@ class Transaction extends React.Component {
       });
   };
   render() {
-    const { listCart} = this.props;
+    const { listCart } = this.props;
     const listAllCart = listCart.map(item => {
       return (
         <ContentTransaction

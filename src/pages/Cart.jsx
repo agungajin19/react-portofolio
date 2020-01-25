@@ -13,7 +13,7 @@ class Cart extends React.Component {
   };
 
   render() {
-    const { listCart} = this.props;
+    const { listCart } = this.props;
     const listAllCart = listCart.map(item => {
       return (
         <ContentCart
@@ -38,7 +38,7 @@ class Cart extends React.Component {
           <div className="col-md-8 row">
             {this.props.totalPrice === 0 ? (
               <div className="mx-auto">
-                <img src={require('../image/zerocart.png')} alt='zerocart' />
+                <img src={require('../image/zerocart.png')} alt="zerocart" />
               </div>
             ) : (
               listAllCart

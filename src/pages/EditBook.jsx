@@ -11,21 +11,16 @@ class EditBook extends React.Component {
   handleEditBook = async () => {
     const self = this;
     const req = {
-      method: 'post',
-      url: 'https://easy.my.id/penerbit/book',
+      method: 'put',
+      url: `https://easy.my.id/penerbit/book/${self.props.idBookEdit}`,
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + localStorage.getItem('token')
       },
       data: {
-        judul: self.props.judulAdd,
-        harga: self.props.hargaAdd * 1,
-        matapelajaran: self.props.matapelajaranAdd,
-        jumlah_soal: self.props.jumlah_soalAdd * 1,
-        jenjang: self.props.jenjangAdd,
-        kelas: self.props.kelasAdd,
-        url_picture: self.props.url_pictureAdd,
-        deskripsi: self.props.deskripsiAdd
+        judul: self.props.judulEdit,
+        url_picture: self.props.url_pictureEdit,
+        deskripsi: self.props.deskripsiEdit
       }
     };
     console.log('tes input', req.data);
@@ -37,7 +32,6 @@ class EditBook extends React.Component {
       })
       .catch(error => {
         alert('Gagal edit Buku');
-        console.log('tes status penerbit', this.props.statusPenerbit);
       });
   };
   render() {
@@ -55,7 +49,7 @@ class EditBook extends React.Component {
             <div className="col-sm-8">
               <input
                 type="text"
-                name="judulAdd"
+                name="judulEdit"
                 onChange={e => this.handleInputEditBook(e)}
                 className="form-control"
                 id="inputPassword3"
@@ -74,26 +68,7 @@ class EditBook extends React.Component {
             <div className="col-sm-8">
               <input
                 type="text"
-                name="url_pictureAdd"
-                onChange={e => this.handleInputEditBook(e)}
-                className="form-control"
-                id="inputPassword3"
-                required
-              />
-            </div>
-          </div>
-          <div className="form-group row">
-            <label
-              for="inputPassword3"
-              className="col-sm-4 col-form-label"
-              style={{ color: '#ff8364' }}
-            >
-              Harga
-            </label>
-            <div className="col-sm-8">
-              <input
-                type="text"
-                name="hargaAdd"
+                name="url_pictureEdit"
                 onChange={e => this.handleInputEditBook(e)}
                 className="form-control"
                 id="inputPassword3"
@@ -112,7 +87,7 @@ class EditBook extends React.Component {
             <div className="col-sm-8">
               <textarea
                 type="textarea"
-                name="deskripsiAdd"
+                name="deskripsiEdit"
                 row="10"
                 onChange={e => this.handleInputEditBook(e)}
                 className="form-control"
@@ -141,6 +116,6 @@ class EditBook extends React.Component {
   }
 }
 export default connect(
-  'judulAdd, hargaAdd, matapelajaranAdd, jumlah_soalAdd, jenjangAdd, kelasAdd, url_pictureAdd, deskripsiAdd, statusPenerbit',
+  'judulEdit, url_pictureEdit, deskripsiEdit, idBookEdit',
   actions
 )(withRouter(EditBook));

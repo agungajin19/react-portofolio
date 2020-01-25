@@ -39,10 +39,10 @@ const initialState = {
   deskripsiAdd: '',
   namaPenerbit: '',
   judulEdit: '',
-  urlEdit: '',
-  hargaEdit: 0,
+  url_pictureEdit: '',
   deskirpsiEdit: '',
-  base_url: 'https://easy.my.id',
+  idBookEdit: 0,
+  base_url: 'https://easy.my.id'
 };
 export const store = createStore(initialState);
 
@@ -244,25 +244,27 @@ export const actions = store => ({
       .catch(error => {});
   },
   handleIdEdit: async (state, id) => {
-    console.log('cek id', id)
+    console.log('cek id', id);
+    store.setState({ idBookEdit: id });
     const req = {
       method: 'get',
       url: `https://easy.my.id/penerbit/book/${id}`,
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${localStorage.getItem('token')}`
-      },
+      }
     };
     Axios(req)
       .then(response => {
         store.setState({
           judulEdit: response.data.judul,
-          urlEdit: response.data.url_picture,
-          hargaEdit: response.data.harga,
-          deskripsiEdit: response.data.deskripsi,
+          url_pictureEdit: response.data.url_picture,
+          deskripsiEdit: response.data.deskripsi
+        });
       })
-    })
-      .catch(error => {});
+      .catch(error => {
+        console.log('kena error');
+      });
   }
 });
 export const getBookByCondition = async keyword => {
