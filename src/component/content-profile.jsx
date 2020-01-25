@@ -12,11 +12,13 @@ const ContentProfile = props => {
       <div>
         <h5>username : {props.usernameProfile}</h5>
         <h5>email : {props.emailProfile}</h5>
+        {props.statusPenerbit ? <h5>penerbit: {props.penerbitProfile}</h5> : <h5></h5> }
+        
       </div>
     </div>
   );
 };
 export default connect(
-  'usernameProfile, emailProfile, statusPenerbit',
+  'usernameProfile, emailProfile, statusPenerbit, penerbitProfile',
   actions
 )(withRouter(ContentProfile));

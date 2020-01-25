@@ -23,7 +23,7 @@ class ModalRegisterPublisher extends React.Component {
     };
     Axios(req)
       .then(function(response) {
-        store.setState({ statusPenerbit: true });
+        store.setState({ statusPenerbit: true, penerbitProfile: self.props.namaPenerbit });
         alert('Daftar Sebagai Penerbit Sukses !!!');
       })
       .catch(function(error) {

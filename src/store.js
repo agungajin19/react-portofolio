@@ -42,6 +42,7 @@ const initialState = {
   url_pictureEdit: '',
   deskirpsiEdit: '',
   idBookEdit: 0,
+  penerbitProfile: '',
   base_url: 'https://easy.my.id'
 };
 export const store = createStore(initialState);
@@ -150,6 +151,7 @@ export const actions = store => ({
           usernameProfile: response.data.username,
           emailProfile: response.data.email,
           statusPenerbit: response.data.status_penerbit,
+          penerbitProfile: response.data.nama_penerbit,
           isLoading: false
         });
       })
