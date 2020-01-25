@@ -27,5 +27,5 @@ const NotMatch = props => {
   );
 };
 
-//mengeksport className NotMatch ke main-route.js
+//mengeksport className NotMatch ke main-route.js/
 export default NotMatch;
