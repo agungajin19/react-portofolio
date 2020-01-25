@@ -7,15 +7,15 @@ const ContentCollection = props => {
   return (
     <div className="col-md-6 border row">
       <div className="col-md-6">
-        <img src={this.props.imageCollection} alt="book" style={{ width: '100%' }} />
+        <img src={props.imageCollection} alt="book" style={{ width: '100%' }} />
       </div>
       <div className="col-md-6">
         <h5>
-          {this.props.titleCollection} {this.props.jenjangCollection} Kelas{' '}
-          {this.props.kelasCollection}
+          {props.titleCollection} {props.jenjangCollection} Kelas{' '}
+          {props.kelasCollection}
         </h5>
-        <h6>{this.props.jumlahSoal} Soal</h6>
-        <p>{this.props.publisherCollection}</p>
+        <h6>{props.jumlahSoal} Soal</h6>
+        <p>{props.publisherCollection}</p>
       </div>
     </div>
   );

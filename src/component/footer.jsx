@@ -34,13 +34,13 @@ const Footer = props => {
               to="/"
               classNameName="navbar-brand pl-2 "
               style={{ color: '#ff4d4d', fontWeight: '700', fontSize: '15pt' }}
-              onClick={() => this.props.homeBack('')}
+              onClick={() => props.homeBack('')}
             >
               <img
                 src={require('../image/logo.png')}
                 alt="logo"
                 width="70%"
-                onClick={() => this.props.homeBack('')}
+                onClick={() => props.homeBack('')}
               />
               easy.com
             </Link>

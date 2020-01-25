@@ -10,8 +10,8 @@ const ContentProfile = props => {
         <img src={require('../image/profile.png')} alt="profile" style={{ width: '50%' }} />
       </div>
       <div>
-        <h5>username : {this.props.usernameProfile}</h5>
-        <h5>email : {this.props.emailProfile}</h5>
+        <h5>username : {props.usernameProfile}</h5>
+        <h5>email : {props.emailProfile}</h5>
       </div>
     </div>
   );
