@@ -39,10 +39,10 @@ const Footer = props => {
               <img
                 src={require('../image/logo.png')}
                 alt="logo"
-                width="70%"
+                width="50%"
                 onClick={() => props.homeBack('')}
               />
-              easy.com
+              easy.my.id
             </Link>
           </div>
         </div>

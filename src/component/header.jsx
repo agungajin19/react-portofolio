@@ -30,7 +30,7 @@ class Header extends Component {
     const userName = localStorage.getItem('username');
     return (
       <header>
-        <nav class="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#ffe8d5' }}>
+        <nav class="navbar navbar-expand-lg navbar-light" style={{ backgroundColor: '#daf1f9' }}>
           <Link
             to="/"
             className="navbar-brand pl-2 "

@@ -3,6 +3,7 @@ import { store, actions } from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import Axios from 'axios';
+import Swal from 'sweetalert2';
 
 // ADDBOOK
 class AddBook extends React.Component {
@@ -34,11 +35,14 @@ class AddBook extends React.Component {
     return await Axios(req)
       .then(response => {
         this.props.getPublisherBook();
-        alert('Berhasil menambahkan buku');
+        Swal.fire('Sukses!', `${self.props.judulAdd} berhasil di tambahkan`, 'success');
       })
       .catch(error => {
-        alert('Gagal Menambahkan Buku');
-        console.log('tes status penerbit', this.props.statusPenerbit);
+        Swal.fire({
+          icon: 'error',
+          title: 'Gagal',
+          text: 'Gagal Menambahkan Buku'
+        });
       });
   };
   render() {

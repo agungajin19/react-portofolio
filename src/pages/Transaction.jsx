@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { actions, store } from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
+import Swal from 'sweetalert2';
 
 import Header from '../component/header';
 import Footer from '../component/footer';
@@ -32,12 +33,20 @@ class Transaction extends React.Component {
     Axios(req)
       .then(function(response) {
         store.setState({ listCart: [], totalPrice: 0 });
-        alert(`Pembayaran dengan menggunakan ${response.data.payment_method} sukses!!!`);
+        Swal.fire(
+          'Sukses!',
+          `Pembayaran dengan menggunakan ${response.data.payment_method} berhasil`,
+          'success'
+        );
         self.props.history.push('/Collection');
       })
       .catch(function(error) {
         store.setState({ isLoading: false });
-        alert('Transaksi gagal');
+        Swal.fire({
+          icon: 'error',
+          title: 'Gagal',
+          text: 'Transaksi gagal'
+        });
       });
   };
   render() {

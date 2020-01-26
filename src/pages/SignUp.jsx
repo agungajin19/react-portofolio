@@ -3,6 +3,7 @@ import { store } from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import Axios from 'axios';
+import Swal from 'sweetalert2';
 
 class SignUp extends React.Component {
   handleInputDaftar = e => {
@@ -26,10 +27,14 @@ class SignUp extends React.Component {
     console.log('tes email', self.props.emailDaftar);
     Axios(req)
       .then(function(response) {
-        alert('Daftar Sukses !!! Silahkan Masuk');
+        Swal.fire('Daftar Sukses!', 'Silahkan Masuk', 'success');
       })
       .catch(function(error) {
-        alert('Daftar Gagal');
+        Swal.fire({
+          icon: 'error',
+          title: 'Daftar Gagal',
+          text: 'Pastikan semua formulir terisi'
+        });
       });
   };
   render() {
@@ -51,6 +56,7 @@ class SignUp extends React.Component {
                 onChange={e => this.handleInputDaftar(e)}
                 className="form-control"
                 id="emailinput"
+                required
               />
             </div>
           </div>
@@ -65,6 +71,7 @@ class SignUp extends React.Component {
                 onChange={e => this.handleInputDaftar(e)}
                 className="form-control"
                 id="username"
+                required
               />
             </div>
           </div>
@@ -83,6 +90,7 @@ class SignUp extends React.Component {
                 onChange={e => this.handleInputDaftar(e)}
                 className="form-control"
                 id="inputPassword1"
+                required
               />
             </div>
           </div>

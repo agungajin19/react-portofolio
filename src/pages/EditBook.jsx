@@ -3,6 +3,7 @@ import { store, actions } from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import Axios from 'axios';
+import Swal from 'sweetalert2';
 
 class EditBook extends React.Component {
   handleInputEditBook = e => {
@@ -28,10 +29,14 @@ class EditBook extends React.Component {
     return await Axios(req)
       .then(response => {
         this.props.getPublisherBook();
-        alert('Berhasil edit buku');
+        Swal.fire('Sukses!', `${self.props.judulEdit} berhasil diubah`, 'success');
       })
       .catch(error => {
-        alert('Gagal edit Buku');
+        Swal.fire({
+          icon: 'error',
+          title: 'Gagal',
+          text: 'Gagal Ubah Buku'
+        });
       });
   };
   render() {

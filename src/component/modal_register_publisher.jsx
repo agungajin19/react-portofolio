@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { store, actions } from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
+import Swal from 'sweetalert2';
 
 class ModalRegisterPublisher extends React.Component {
   handleMasukan = e => {
@@ -24,10 +25,14 @@ class ModalRegisterPublisher extends React.Component {
     Axios(req)
       .then(function(response) {
         store.setState({ statusPenerbit: true, penerbitProfile: self.props.namaPenerbit });
-        alert('Daftar Sebagai Penerbit Sukses !!!');
+        Swal.fire('Daftar Sukses!', `Selamat Datang ${self.props.namaPenerbit}`, 'success');
       })
       .catch(function(error) {
-        alert('Daftar Gagal');
+        Swal.fire({
+          icon: 'error',
+          title: 'Gagal',
+          text: 'Gagal Daftar Jadi Penerbit'
+        });
       });
   };
   render() {

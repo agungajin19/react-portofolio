@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { store } from '../store';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'unistore/react';
+import Swal from 'sweetalert2';
 
 class SignIn extends React.Component {
   handleMasukan = e => {
@@ -33,9 +34,14 @@ class SignIn extends React.Component {
             self.props.history.push('/');
           }
         }
+        Swal.fire('Login Sukses!', `Selamat Datang ${self.props.username}`, 'success');
       })
       .catch(function(error) {
-        alert('invalid username or password');
+        Swal.fire({
+          icon: 'error',
+          title: 'Login Gagal',
+          text: 'username atau password tidak sesuai'
+        });
       });
   };
 
@@ -44,11 +50,7 @@ class SignIn extends React.Component {
       <div className="container align-item-center pr-0">
         <form onSubmit={e => e.preventDefault(e)}>
           <div className="form-group row">
-            <label
-              for="inputEmail3"
-              className="col-sm-4 col-form-label"
-              style={{ color: '#ff8364' }}
-            >
+            <label for="username" className="col-sm-4 col-form-label" style={{ color: '#ff8364' }}>
               Username
             </label>
             <div className="col-sm-8">
@@ -57,16 +59,13 @@ class SignIn extends React.Component {
                 name="username"
                 onChange={e => this.handleMasukan(e)}
                 className="form-control"
-                id="inputEmail3"
+                id="username"
+                required
               />
             </div>
           </div>
           <div className="form-group row">
-            <label
-              for="inputPassword3"
-              className="col-sm-4 col-form-label"
-              style={{ color: '#ff8364' }}
-            >
+            <label for="password" className="col-sm-4 col-form-label" style={{ color: '#ff8364' }}>
               Password
             </label>
             <div className="col-sm-8">
@@ -75,7 +74,8 @@ class SignIn extends React.Component {
                 name="password"
                 onChange={e => this.handleMasukan(e)}
                 className="form-control"
-                id="inputPassword3"
+                id="password"
+                required
               />
             </div>
           </div>

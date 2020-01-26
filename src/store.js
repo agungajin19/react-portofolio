@@ -1,5 +1,6 @@
 import createStore from 'unistore';
 import Axios from 'axios';
+import Swal from 'sweetalert2';
 
 const initialState = {
   isLoading: true,
@@ -92,10 +93,14 @@ export const actions = store => ({
     };
     Axios(req)
       .then(response => {
-        alert('Soal berhasil ditambahkan');
+        Swal.fire('Sukses!', `Buku berhasil diubah`, 'success');
       })
       .catch(error => {
-        alert('Anda sudah menambahkan soal ini ke keranjang atau koleksi');
+        Swal.fire({
+          icon: 'error',
+          title: 'Gagal',
+          text: 'Anda sudah menambahkan soal ini ke keranjang atau koleksi'
+        });
       });
   },
   getCart: async state => {
@@ -216,7 +221,7 @@ export const actions = store => ({
     Axios(req)
       .then(response => {
         getCartNew();
-        alert('Hapus barang berhasil');
+        Swal.fire('Sukses!', `Hapus Barang berhasil`, 'success');
       })
       .catch(error => {});
   },
@@ -265,8 +270,7 @@ export const actions = store => ({
           deskripsiEdit: response.data.deskripsi
         });
       })
-      .catch(error => {
-      });
+      .catch(error => {});
   },
   getUser: () => {
     const req = {
@@ -280,13 +284,13 @@ export const actions = store => ({
     Axios(req)
       .then(response => {
         store.setState({ listUser: response.data, isLoading: false });
-        console.log('cek gak error')
+        console.log('cek gak error');
       })
       .catch(error => {
         store.setState({ isLoading: false });
-        console.log('cek error')
+        console.log('cek error');
       });
-  },
+  }
 });
 export const getBookByCondition = async keyword => {
   const req = {
