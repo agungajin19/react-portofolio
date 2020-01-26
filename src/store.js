@@ -43,6 +43,7 @@ const initialState = {
   deskirpsiEdit: '',
   idBookEdit: 0,
   penerbitProfile: '',
+  listUser: [],
   base_url: 'https://easy.my.id'
 };
 export const store = createStore(initialState);
@@ -265,9 +266,27 @@ export const actions = store => ({
         });
       })
       .catch(error => {
-        console.log('kena error');
       });
-  }
+  },
+  getUser: () => {
+    const req = {
+      method: 'get',
+      url: 'https://easy.my.id/admin/user',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    };
+    Axios(req)
+      .then(response => {
+        store.setState({ listUser: response.data, isLoading: false });
+        console.log('cek gak error')
+      })
+      .catch(error => {
+        store.setState({ isLoading: false });
+        console.log('cek error')
+      });
+  },
 });
 export const getBookByCondition = async keyword => {
   const req = {

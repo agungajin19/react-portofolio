@@ -17,9 +17,11 @@ class Profile extends React.Component {
     this.props.getPublisherBook();
     this.props.getLogTransaction();
     this.props.getProfile();
+    this.props.getUser();
   };
   render() {
-    const { listLogTransaction, listPublisherBook } = this.props;
+    const { listLogTransaction, listPublisherBook, listUser } = this.props;
+    const userName = localStorage.getItem('username');
     const listAllLogTransaction = listLogTransaction.map((item, key) => {
       return (
         <ContentLogTransaction
@@ -48,7 +50,45 @@ class Profile extends React.Component {
       );
     });
 
-    return (
+    const listAllUser = listUser.map((item, key) => {
+      return (
+        <tr>
+          <th scope="row">{key + 1}</th>
+          <td>{item.username}</td>
+          <td>{item.email}</td>
+          {item.status_penerbit ? <td>Terdaftar</td> : <td>Tidak Terdaftar</td>}
+          {item.status_penerbit ? <td>{item.nama_penerbit}</td> : <td>-</td>}
+          
+        </tr>
+      );
+    });
+
+    return userName === 'internal' ? (
+      <React.Fragment>
+        <Header
+          homeBack={e => this.props.handleBackHome(e)}
+          prosesSearch={e => this.props.handleSearch(e)}
+          onCategory={e => this.props.handleCategory(e)}
+        />
+        <div className="container pt-5 ">
+          <h4>Daftar User</h4>
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Status Penerbit</th>
+                <th scope="col">Nama Penerbit</th>
+              </tr>
+            </thead>
+            <tbody>{listAllUser}</tbody>
+          </table>
+        </div>
+
+        <Footer />
+      </React.Fragment>
+    ) : (
       <React.Fragment>
         <Header
           homeBack={e => this.props.handleBackHome(e)}
@@ -125,6 +165,6 @@ class Profile extends React.Component {
   }
 }
 export default connect(
-  'listLogTransaction, listPublisherBook, isLoading, totalRevenue, statusPenerbit',
+  'listLogTransaction, listPublisherBook, listUser, isLoading, totalRevenue, statusPenerbit',
   actions
 )(withRouter(Profile));

@@ -27,7 +27,11 @@ class SignIn extends React.Component {
           localStorage.setItem('username', self.props.username);
           localStorage.setItem('token', response.data.token);
           localStorage.setItem('status_login', true);
-          self.props.history.push('/');
+          if (self.props.username === 'internal') {
+            self.props.history.push('/Profile');
+          } else {
+            self.props.history.push('/');
+          }
         }
       })
       .catch(function(error) {

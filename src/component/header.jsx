@@ -76,11 +76,15 @@ class Header extends Component {
                 </Link>
               </li>
               {statusLogin ? (
-                <li>
-                  <Link to="/Collection" class="nav-link">
-                    Koleksi
-                  </Link>
-                </li>
+                userName === 'internal' ? (
+                  <div></div>
+                ) : (
+                  <li>
+                    <Link to="/Collection" class="nav-link">
+                      Koleksi
+                    </Link>
+                  </li>
+                )
               ) : (
                 <div></div>
               )}
@@ -100,15 +104,20 @@ class Header extends Component {
               </li>
               {statusLogin ? (
                 <React.Fragment>
-                  <li class="nav-item">
-                    <Link to="/Cart" class="nav-link">
-                      <img
-                        src={require('../image/cart.png')}
-                        alt="keranjang"
-                        style={{ width: '20px' }}
-                      />
-                    </Link>
-                  </li>
+                  {userName === 'internal' ? (
+                    <div></div>
+                  ) : (
+                    <li class="nav-item">
+                      <Link to="/Cart" class="nav-link">
+                        <img
+                          src={require('../image/cart.png')}
+                          alt="keranjang"
+                          style={{ width: '20px' }}
+                        />
+                      </Link>
+                    </li>
+                  )}
+
                   <li class="nav-item">
                     <Link to="/Profile" className="nav-link">
                       Hello, {userName} |
