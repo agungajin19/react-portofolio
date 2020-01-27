@@ -190,6 +190,22 @@ export const actions = store => ({
         store.setState({ isLoading: false });
       });
   },
+  handleDeleteUser: async (state, id) => {
+    const req = {
+      method: 'delete',
+      url: `https://easy.my.id/admin/user/${id}`,
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    };
+    Axios(req)
+      .then(response => {
+        getUserNew();
+        Swal.fire('Sukses!', `Hapus User berhasil`, 'success');
+      })
+      .catch(error => {});
+  },
   handleDelete: async (state, id) => {
     const req = {
       method: 'delete',
@@ -349,5 +365,24 @@ export const getPublisherBookNew = async () => {
     })
     .catch(error => {
       store.setState({ isLoading: false });
+    });
+};
+export const getUserNew = () => {
+  const req = {
+    method: 'get',
+    url: 'https://easy.my.id/admin/user',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
+  };
+  Axios(req)
+    .then(response => {
+      store.setState({ listUser: response.data, isLoading: false });
+      console.log('cek gak error');
+    })
+    .catch(error => {
+      store.setState({ isLoading: false });
+      console.log('cek error');
     });
 };

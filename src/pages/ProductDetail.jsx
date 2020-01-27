@@ -12,6 +12,7 @@ class ProductDetail extends React.Component {
   };
   render() {
     const statusLogin = JSON.parse(localStorage.getItem('status_login'));
+    const userName = localStorage.getItem('username');
     return (
       <React.Fragment>
         <Header
@@ -37,14 +38,18 @@ class ProductDetail extends React.Component {
               <p>{this.props.penerbit}</p>
               <h5>Rp. {this.props.harga}</h5>
               {statusLogin ? (
-                <button
-                  type="button"
-                  class="btn"
-                  style={{ backgroundColor: '#ff8364', color: '#ffe8d5' }}
-                  onClick={() => this.props.addCart(this.props.productId)}
-                >
-                  Tambah Keranjang
-                </button>
+                userName === 'internal' ? (
+                  <div></div>
+                ) : (
+                  <button
+                    type="button"
+                    class="btn"
+                    style={{ backgroundColor: '#ff8364', color: '#ffe8d5' }}
+                    onClick={() => this.props.addCart(this.props.productId)}
+                  >
+                    Tambah Keranjang
+                  </button>
+                )
               ) : (
                 <di></di>
               )}

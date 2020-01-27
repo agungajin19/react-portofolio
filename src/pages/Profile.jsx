@@ -58,6 +58,16 @@ class Profile extends React.Component {
           <td>{item.email}</td>
           {item.status_penerbit ? <td>Terdaftar</td> : <td>Tidak Terdaftar</td>}
           {item.status_penerbit ? <td>{item.nama_penerbit}</td> : <td>-</td>}
+          <td>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              onClick={() => this.props.handleDeleteUser(item.id)}
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </td>
         </tr>
       );
     });
@@ -79,6 +89,7 @@ class Profile extends React.Component {
                 <th scope="col">Email</th>
                 <th scope="col">Status Penerbit</th>
                 <th scope="col">Nama Penerbit</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>{listAllUser}</tbody>
