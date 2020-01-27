@@ -8,7 +8,7 @@ import ContentHome from '../component/content-home';
 
 class Home extends React.Component {
   componentDidMount = () => {
-    this.props.handleCategory();
+    this.props.handleBackHome();
   };
   render() {
     const { listBook, isLoading } = this.props;

@@ -54,7 +54,7 @@ export const actions = store => ({
     const keyword = e.target.value;
     getBookByCondition(keyword);
   },
-  handleBackHome: async (state, e) => {
+  handleBackHome: async (state, e = '') => {
     const keyword = e;
     await getBookByCondition(keyword);
   },
