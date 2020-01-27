@@ -49,7 +49,7 @@ class Collection extends React.Component {
             )}
           </div>
         </div>
-        <Footer />
+        <Footer homeBack={e => this.props.handleBackHome(e)} />
       </React.Fragment>
     );
   }

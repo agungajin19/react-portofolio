@@ -54,7 +54,7 @@ class ProductDetail extends React.Component {
             </div>
           </div>
         </div>
-        <Footer />
+        <Footer homeBack={e => this.props.handleBackHome(e)} />
       </React.Fragment>
     );
   }

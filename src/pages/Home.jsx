@@ -8,7 +8,7 @@ import ContentHome from '../component/content-home';
 
 class Home extends React.Component {
   componentDidMount = () => {
-    this.props.getBook();
+    this.props.handleCategory();
   };
   render() {
     const { listBook, isLoading } = this.props;
@@ -37,7 +37,7 @@ class Home extends React.Component {
             {isLoading ? <div style={{ textAlign: 'center' }}>Loading ...</div> : listAllBook}
           </div>
         </div>
-        <Footer />
+        <Footer homeBack={e => this.props.handleBackHome(e)} />
       </React.Fragment>
     );
   }

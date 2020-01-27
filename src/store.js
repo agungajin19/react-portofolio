@@ -50,22 +50,6 @@ const initialState = {
 export const store = createStore(initialState);
 
 export const actions = store => ({
-  getBook: () => {
-    const req = {
-      method: 'get',
-      url: 'https://easy.my.id/public/book',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
-    Axios(req)
-      .then(response => {
-        store.setState({ listBook: response.data.data, isLoading: false });
-      })
-      .catch(error => {
-        store.setState({ isLoading: false });
-      });
-  },
   handleSearch: async (state, e) => {
     const keyword = e.target.value;
     getBookByCondition(keyword);
@@ -74,7 +58,7 @@ export const actions = store => ({
     const keyword = e;
     await getBookByCondition(keyword);
   },
-  handleCategory: async (state, e) => {
+  handleCategory: async (state, e = '') => {
     const keyword = e;
     await getBookByCategory(keyword);
   },

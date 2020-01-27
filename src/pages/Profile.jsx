@@ -58,7 +58,6 @@ class Profile extends React.Component {
           <td>{item.email}</td>
           {item.status_penerbit ? <td>Terdaftar</td> : <td>Tidak Terdaftar</td>}
           {item.status_penerbit ? <td>{item.nama_penerbit}</td> : <td>-</td>}
-          
         </tr>
       );
     });
@@ -86,7 +85,7 @@ class Profile extends React.Component {
           </table>
         </div>
 
-        <Footer />
+        <Footer homeBack={e => this.props.handleBackHome(e)} />
       </React.Fragment>
     ) : (
       <React.Fragment>

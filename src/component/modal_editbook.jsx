@@ -16,9 +16,9 @@ const ModalEditBook = props => {
       aria-hidden="true"
     >
       <div className="modal-dialog modal-dialog-centered" role="document">
-        <div className="modal-content" style={{ backgroundColor: '#ffe8d5' }}>
-          <div className="modal-header text-center" style={{ backgroundColor: '#ff8364' }}>
-            <h5 className="modal-title mx-auto" style={{ color: '#ffe8d5' }}>
+        <div className="modal-content" style={{ backgroundColor: '#daf1f9' }}>
+          <div className="modal-header text-center" style={{ backgroundColor: '#87c0cd' }}>
+            <h5 className="modal-title mx-auto" style={{ color: '#fee9d7' }}>
               EDIT BUKU
             </h5>
             <button type="button" className="close ml-0" data-dismiss="modal" aria-label="Close">
